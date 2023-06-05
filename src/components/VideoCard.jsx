@@ -4,7 +4,7 @@ import { CheckCircle } from "@mui/icons-material";
 
 import { demoThumbnailUrl, demoVideoUrl, demoVideoTitle, demoChannelUrl, demoChannelTitle} from "../utils/constants";
 
-const VideoCard = ({video}) => {
+const VideoCard = ({date, video}) => {
     // const { id, snippet } = video;
     // const { videoId } = id;
     // IN short destructuring object below:
@@ -18,10 +18,17 @@ const VideoCard = ({video}) => {
             <CardMedia 
                 image={snippet?.thumbnails?.high?.url} //Always use ? before . to avoid the errors.
                 alt={snippet?.title}
-                sx={{width:{xs:'100%', md: '105%'}, height:{xs:'185px', md: '150px'} }}
+                sx={{width:{xs:'100%', md: '105%'}, height:{xs:'142px', md: '147px'} }}
              />
         </Link>
-        <CardContent sx={{ backgroundColor:'#1e1e1e', height:'75px'}} >
+        <CardContent sx={{ pt:0.5, backgroundColor:'#1e1e1e', height:'75px'}} >
+        <Typography
+            variant='subtitle2'
+            sx={{
+                fontSize:"12px",
+                color:"gray",
+                mb:"8px"
+            }}>{date}</Typography>
         <Link to={videoId ? `/video/${videoId}` : demoVideoUrl}>
             <Typography variant='body2' fontWeight='bold' color='#fff'>
                 {snippet?.title.slice(0,45) || demoVideoTitle.slice(0,45)}

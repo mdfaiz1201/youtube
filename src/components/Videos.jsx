@@ -10,14 +10,20 @@ const Videos = ({videos, direction}) => {
         xs:'center', md:"flex-start"
       }
     }} gap={1.8} >
-      {videos.map((item,idx) => (
-        <Box sx={{width:{xs:'100%', sm:"250px"} }} key ={idx}>
-          {/* {console.log(item.id)} */}
-          {item.id.videoId && <VideoCard video={item}/>}
-          {item.id.channelId && <ChannelCard channelDetail={item} />}
-          {item.id.playlistId && <PlaylistCard playlist={item}/>}
-        </Box>
-      ))}
+      {videos.map((item,idx) => {
+        const date = new Date(item.snippet.publishTime);
+        const options = {day:"numeric", month:"long", year:"numeric"};
+        const formattedDate = date.toLocaleDateString(undefined,options)
+        return(
+          <Box sx={{width:{xs:'100%', sm:"250px"}, height:{xs:"250px"} }} key ={idx}>
+            {/* {console.log(formattedDate)} */}
+            {item.id.videoId && <VideoCard date ={formattedDate} video={item}/>}
+            {item.id.channelId && <ChannelCard channelDetail={item} />}
+            {item.id.playlistId && <PlaylistCard playlist={item}/>}
+          </Box>
+        )
+    }
+      )}
     </Stack>
   )
 }
