@@ -1,5 +1,5 @@
 import { Link } from "react-router-dom";
-import { Typography, Box, Stack } from "@mui/material";
+import { Typography, Stack } from "@mui/material";
 import { CheckCircle } from "@mui/icons-material";
 
 
