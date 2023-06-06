@@ -24,4 +24,4 @@ yarn-error.log*
 
 #Key ignore file
 .env
-*.json
+# *.json

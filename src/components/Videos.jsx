@@ -15,7 +15,7 @@ const Videos = ({videos, direction}) => {
         const options = {day:"numeric", month:"long", year:"numeric"};
         const formattedDate = date.toLocaleDateString(undefined,options)
         return(
-          <Box sx={{width:{xs:'100%', sm:"250px"}, height:{xs:"250px"} }} key ={idx}>
+          <Box sx={{ width:{xs:'100%', sm:"250px"} }} key ={idx}>
             {/* {console.log(formattedDate)} */}
             {item.id.videoId && <VideoCard date ={formattedDate} video={item}/>}
             {item.id.channelId && <ChannelCard channelDetail={item} />}

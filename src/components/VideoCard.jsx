@@ -18,7 +18,7 @@ const VideoCard = ({date, video}) => {
             <CardMedia 
                 image={snippet?.thumbnails?.high?.url} //Always use ? before . to avoid the errors.
                 alt={snippet?.title}
-                sx={{width:{xs:'100%', md: '105%'}, height:{xs:'142px', md: '147px'} }}
+                sx={{width:{xs:'100%', md: '105%'}, height:{xs:'180px', sm:'142px', md: '147px'} }}
              />
         </Link>
         <CardContent sx={{ pt:0.5, backgroundColor:'#1e1e1e', height:'75px'}} >
