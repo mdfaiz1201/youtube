@@ -61,6 +61,28 @@ a {
   border-radius: 20px;
   transition: all 0.3s ease;
 }
+.Playlist-card{
+  position: relative;
+}
+.Playlist-card .CardContent::after{
+  position: absolute;
+  content: "Playlist update soon";
+  bottom:0;
+  right:0;
+  background-color: #555;
+  color:#fff;
+  font-weight: 600;
+  padding:4px;
+}
+
+.Show-description{
+  color:#ccc;
+  font-size: 18px;
+  padding:8px
+}
+.close-description, .Show-description{
+  cursor: pointer;
+}
 
 @media screen and (min-width:900px){
   .react-player {

@@ -1,16 +1,28 @@
 import { Link } from "react-router-dom";
 import { Typography, Stack } from "@mui/material";
 import { CheckCircle } from "@mui/icons-material";
+import { useState } from "react";
+import Description from "./Description";
 
 
 const VideoTitleAndChannelName = ({videoDetail}) => {
+    const [showDescription , setShowDescription ] = useState(false)
+    const [showTitle , setShowTitle ] = useState(true)
     const { snippet:{title, channelId, channelTitle}, statistics:{viewCount, likeCount} } = videoDetail;
+    const handelClick = () => {
+            setShowTitle(!showTitle);
+            setShowDescription(!showDescription);
+    }
+
+    const detailDescription =   <Description handelClick ={handelClick} videoDetail = {videoDetail} />
+                               
     return (
         <>
+            {showTitle && <>
             <Typography sx={{ color:"#fff", fontSize:{xs:'20px', md:'24px'}, fontWeight:'bold', p:1 }} >
-                {title}
-                </Typography>
-                <Stack direction="row" justifyContent="space-between" sx={{ color:'#fff', zIndex:9999, px:1, py:0.2 }}>
+                {title}<span className="Show-description" onClick={handelClick}>...show more</span>
+            </Typography>
+            <Stack direction="row" justifyContent="space-between" sx={{ color:'#fff', zIndex:9999, px:1, py:0.2 }}>
                 <Link to={`/channel/${channelId}`}>
                     <Typography sx={{ fontSize:{xs:'17px', md:'20px'}, color:'#fff'}}>
                     {channelTitle}
@@ -25,7 +37,9 @@ const VideoTitleAndChannelName = ({videoDetail}) => {
                     {parseInt(likeCount).toLocaleString(0)}<br/>likes
                     </Typography>
                 </Stack>
-                </Stack>
+            </Stack>
+            </>}
+            {showDescription && detailDescription}
         </>
     )
 }

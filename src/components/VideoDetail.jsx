@@ -21,12 +21,11 @@ const VideoDetail = () => {
   }, [id]);
 
   if (!videoDetail) return "Loading..."
-  // const 
   return (
     <Box sx={{minHeight:'95vh'}}>
       <Stack direction={{xs:'column', sm:'row' }}>
         <Box bgcolor="#000" sx={{ flex:2, position:'sticky', top:'75px' }}>
-          <ReactPlayer url={`https://www.youtube.com/watch?v=${id}`} className="react-player" controls />
+          <ReactPlayer id ="Media-player" url={`https://www.youtube.com/watch?v=${id}`} className="react-player" controls />
           <Hidden smDown>
             <VideoTitleAndChannelName videoDetail={videoDetail}/>
           </Hidden>

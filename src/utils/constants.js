@@ -1,6 +1,3 @@
-// Utils folder stand for utilities means something which we call all across our applications.
-
-
 import MusicNoteIcon from '@mui/icons-material/MusicNote';
 import HomeIcon from '@mui/icons-material/Home';
 import CodeIcon from '@mui/icons-material/Code';

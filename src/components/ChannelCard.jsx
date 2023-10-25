@@ -5,8 +5,6 @@ import { Link } from "react-router-dom";
 import { demoProfilePicture, demoChannelTitle } from "../utils/constants";
 
 const ChannelCard = ({channelDetail, marginTop, pointerEvents}) => { 
-  // <div>channel</div>
-    // console.log(channelDetail)
     return (
     <Box
       sx={{pointerEvents,
@@ -18,7 +16,6 @@ const ChannelCard = ({channelDetail, marginTop, pointerEvents}) => {
         width: {xs:'100%', md: '250px'},
         margin:"auto",
         marginTop
-        // write marginTop:marginTop or only marginTop both work same.
       }}
     >
       <Link to={`/channel/${channelDetail?.snippet?.channelId}`}>

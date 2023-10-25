@@ -5,19 +5,20 @@ import { CheckCircle } from "@mui/icons-material";
 import { demoVideoUrl, demoVideoTitle, demoChannelUrl, demoChannelTitle} from "../utils/constants";
 
 const VideoCard = ({date, video}) => {
-    // const { id, snippet } = video;
-    // const { videoId } = id;
-    // IN short destructuring object below:
-    const {id:{videoId}, snippet} = video;
-    // console.log(videoId, snippet);
+  const {id:{videoId}, snippet} = video;
+
+ // Created a temporary DOM element to decode HTML entities
+  const tempElement = document.createElement('div');
+  tempElement.innerHTML = snippet?.title;
+
   return (
     <Card sx={{ 
             width: {xs:'100%', md: '250px'}, boxShadow:'none', borderRadius:0
         }}>
         <Link to={videoId ? `/video/${videoId}` : demoVideoUrl}>
             <CardMedia 
-                image={snippet?.thumbnails?.high?.url} //Always use ? before . to avoid the errors.
-                alt={snippet?.title}
+                image={snippet?.thumbnails?.high?.url}
+                alt={tempElement.innerText}
                 sx={{width:{xs:'100%', md: '105%'}, height:{xs:'180px', sm:'142px', md: '147px'} }}
              />
         </Link>
@@ -31,7 +32,7 @@ const VideoCard = ({date, video}) => {
             }}>{date}</Typography>
         <Link to={videoId ? `/video/${videoId}` : demoVideoUrl}>
             <Typography variant='body2' fontWeight='bold' color='#fff'>
-                {snippet?.title.slice(0,45) || demoVideoTitle.slice(0,45)}
+                {tempElement.innerText.slice(0,45) || demoVideoTitle.slice(0,45)}
             </Typography>
         </Link>
         <Link to={snippet?.channelId ? `/video/${snippet?.channelId}` : demoChannelUrl}>

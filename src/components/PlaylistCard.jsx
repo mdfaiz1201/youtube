@@ -5,28 +5,24 @@ import { CheckCircle } from "@mui/icons-material";
 import { demoVideoUrl, demoVideoTitle, demoChannelUrl, demoChannelTitle} from "../utils/constants";
 
 const PlaylistCard = ({playlist}) => {
-    // const { id, snippet } = playlist;
-    // const { playlistId } = id;
-    // IN short destructuring object below:
-    // console.log(playlist);
-    const {id:{playlistId}, snippet} = playlist;
-    // console.log(playlistId, snippet);
+
+  const {id:{playlistId}, snippet} = playlist;
   return (
-    <Card sx={{ width: {xs:'100%', md: '250px'}, boxShadow:'none', borderRadius:0 }}>
-        <Link to={playlistId ? `/video/${playlistId}` : demoVideoUrl}>
+    <Card className="Playlist-card" sx={{ width: {xs:'100%', md: '250px'}, boxShadow:'none', borderRadius:0 }}>
+        <Link to={playlistId ? `/playlist/${playlistId}` : demoVideoUrl}>
             <CardMedia 
                 image={snippet?.thumbnails?.high?.url} //Always use ? before . to avoid the errors.
                 alt={snippet?.title}
                 sx={{width: {xs:'100%', md: '105%'}, height:{xs:'180px', sm:'142px', md: '147px'} }}
              />
         </Link>
-        <CardContent sx={{ backgroundColor:'#1e1e1e', height:'75px'}} >
-        <Link to={playlistId ? `/video/${playlistId}` : demoVideoUrl}>
+        <CardContent className="CardContent" sx={{ backgroundColor:'#1e1e1e', height:'75px'}} >
+        <Link to={playlistId ? `/playlist/${playlistId}` : demoVideoUrl}>
             <Typography variant='subtitle' fontWeight='bold' color='#fff'>
                 {snippet?.title.slice(0,45) || demoVideoTitle.slice(0,45)}
             </Typography>
         </Link>
-        <Link to={snippet?.channelId ? `/video/${snippet?.channelId}` : demoChannelUrl}>
+        <Link to={snippet?.channelId ? `/playlist/${snippet?.channelId}` : demoChannelUrl}>
             <Typography variant='subtitle2' fontWeight='bold' color='gray'>
                 {snippet?.demoChannelTitle || demoChannelTitle}
                 <CheckCircle sx={{ fontSize:12, color:'gray', ml:'5px' }}/>
