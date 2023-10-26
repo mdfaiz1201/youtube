@@ -29,6 +29,10 @@ const ChannelCard = ({channelDetail, marginTop, pointerEvents}) => {
             {channelDetail?.snippet?.title || demoChannelTitle}
             <CheckCircle sx={{fontSize:14, color:'gray', ml:'5px' }} />
           </Typography>
+          <Typography variant='h6' sx={{textAlign:"center"}}>
+            <span style={{color:'red'}}>Subscribers </span>
+            <span>{channelDetail?.statistics?.subscriberCount}</span>
+         </Typography>
 
         </CardContent>
       </Link>

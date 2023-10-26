@@ -1,30 +1,18 @@
 import { Link } from "react-router-dom";
 import { Typography, Stack } from "@mui/material";
 import { CheckCircle } from "@mui/icons-material";
-import { useState } from "react";
-import Description from "./Description";
 
 
 const VideoTitleAndChannelName = ({videoDetail}) => {
-    const [showDescription , setShowDescription ] = useState(false)
-    const [showTitle , setShowTitle ] = useState(true)
     const { snippet:{title, channelId, channelTitle}, statistics:{viewCount, likeCount} } = videoDetail;
-    const handelClick = () => {
-            setShowTitle(!showTitle);
-            setShowDescription(!showDescription);
-    }
-
-    const detailDescription =   <Description handelClick ={handelClick} videoDetail = {videoDetail} />
-                               
     return (
         <>
-            {showTitle && <>
             <Typography sx={{ color:"#fff", fontSize:{xs:'20px', md:'24px'}, fontWeight:'bold', p:1 }} >
-                {title}<span className="Show-description" onClick={handelClick}>...show more</span>
+                {title}
             </Typography>
             <Stack direction="row" justifyContent="space-between" sx={{ color:'#fff', zIndex:9999, px:1, py:0.2 }}>
                 <Link to={`/channel/${channelId}`}>
-                    <Typography sx={{ fontSize:{xs:'17px', md:'20px'}, color:'#fff'}}>
+                    <Typography sx={{ fontSize:{xs:'17px', md:'20px',padding:"10px 20px", borderRadius:"55px", background:"red"}, color:'#fff'}}>
                     {channelTitle}
                     <CheckCircle sx={{ fontSize:'12px', color: 'gray', ml:"5px" }}/>
                     </Typography>
@@ -38,10 +26,8 @@ const VideoTitleAndChannelName = ({videoDetail}) => {
                     </Typography>
                 </Stack>
             </Stack>
-            </>}
-            {showDescription && detailDescription}
-        </>
-    )
+      </>
+   )
 }
 
 export default VideoTitleAndChannelName;

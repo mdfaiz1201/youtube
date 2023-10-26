@@ -75,12 +75,13 @@ a {
   padding:4px;
 }
 
-.Show-description{
-  color:#ccc;
+.description{
+  color:#fff;
   font-size: 18px;
+  font-weight: 600;
   padding:8px
 }
-.close-description, .Show-description{
+.close-description, .description{
   cursor: pointer;
 }
 
